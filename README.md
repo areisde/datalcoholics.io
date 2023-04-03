@@ -19,9 +19,17 @@ Please, fill the following sections about your project.
 
 ### Dataset
 
-We will be exploring a dataset that was scraped from TripAdvisor by one of the members of our group for another project (which was also supervised by Prof. Laurent Vuillon). The data goes from January 2012 up until September 2022. The dataset consists of all restaurants in Switzerland and neighbouring regions present on TripAdvisor, as well as all reviews for these restaurants and user profiles that wrote the reviews. The dataset has already been used to create a restaurant recommender system, so it doesn’t need much more cleaning or preprocessing as that has already been done. This is what the dataset looks like :
+For our visualization project, we will be exploring a dataset scraped from TripAdvisor by one of our group members for another project (which was also supervised by Prof. Laurent Vuillon). 
 
+The data is spread out between January 2012 and September 2022. 
+It includes restaurants on TripAdvisor in Switzerland and neighboring regions (mostly France and Germany), as well as all reviews and user profiles that wrote the reviews.
+
+Since it was used for a previous project (a restaurant recommender system), the dataset doesn't require much extra cleaning or preparation. However, we noticed minor issues such as missing or wrongly place data that still need some proper pre-processing.
+
+The following table summarize the content of our dataset :
 ![Dataset fields](/imgs/dataset_table.png)
+
+The dataset set contains 31643 restaurants, 349995 users for a total of 591520 reviews.
 
 ### Problematic
 
