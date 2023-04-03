@@ -66,9 +66,12 @@ For additional details regarding data, you can take a look at the `milestone_1.i
 ### Related work
 As said previously, this dataset consists of TripAdvisor scraped data. TripAdvisor has been the subject of numerous studies and research, especially using machine learning and sentiment analysis : [here](https://deepnote.com/@abid/Trip-Advisor-Data-AnalysisML-f6060b39-d76c-4579-9648-a54bc8b5ffb5) is a great example of such. Yet, those studies focus exclusively on sentiment and often analyze restaurant reviews from all over the world. One aspect of our project is to integrate geographical information to display to users which is often overlooked by ML-focused studies.
  
-Moreover, our main focus is to center our project around Switzerland and its surroundings and focus our attention on local restaurants to provide an insight of the nearby area. Another issue with TripAdvisor data studies is that they frequently focus on numerical results and basic mathematical graph visualizations: we would like to bring our results in an interactive and useful format for people to be able to experiment with our results.
+Moreover, our main focus is to center our project around Switzerland and its surroundings and focus our attention on local restaurants to provide an insight of the nearby area. 
+
+Another issue with TripAdvisor data studies is that they frequently focus on numerical results and basic mathematical graph visualizations: as said previously, we would like to bring our results in an interactive and useful format for people to be able to experiment with our results.
  
 To get an idea of what visualizations we want to create, [Tableau Public](https://public.tableau.com/app/discover) is a good way to start: it references thousands of data visualizations in a variety of subjects. This website collects visuals from newspapers or institutions as well as some from blogs or personal websites.  It allows us to get ideas for our project by having concrete examples of various visualizations.
+
 Regarding restaurant-oriented visualizations, the [NYC Foodiverse](http://nycfoodiverse.com/) by Will Su is one great example: it focuses on sanitary problems in NYC restaurants. It summarizes very complex data that can be hard to explain and represents it in a simple and elegant way.
   
 On a different level, the YouTube channel from the [Vox](https://www.youtube.com/@Vox) newspaper is a good model at making data visualizations and infographics simple enough for everyone to understand. They can simplify complex subjects using clear and helpful visualizations to display data, metrics, etc to make people understand the big picture.
