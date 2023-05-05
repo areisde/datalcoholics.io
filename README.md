@@ -108,9 +108,9 @@ The interesting feature will be in the heatmap and filters functionalities : by 
 
 Below the map, adaptive graphics will display information about the restaurant visible on the portion of the map : if the user moves the map, the chart will be recomputed accordingly. Those charts  will aggregate the metrics on the restaurants and show the average ratings, the most frequent cuisine among the restaurants as well as some of the key restaurants. We could also make them take in account information from restaurants from only a certain neighborhood clicked by the user. Those are subject to change if we found more interesting metrics to display in the meantime.
 
-A second panel will be centered around the cuisine types : a user selects one or several types of cuisine and it will display the reviews it got over time as well as the average rating of the cuisine over time. Selecting multiple cuisine types will generate stacked figures. This way, users will have a clear idea about the attractiveness of this cuisine. Additional information about the user profiles that left reviews will help understand the audience better : the repartition in age or canton they are from for example. 
+A second panel will be centered around the cuisine types : a user selects one or several types of cuisine and it will display the reviews it got over time as well as the average rating of the cuisine over time. Selecting multiple cuisine types will generate stacked figures. This way, users will have a clear idea about the attractiveness of this cuisine. Additional information about the user profiles that left reviews will help understand the audience better : the repartition in age or canton they are from for example. Like the above mentioned charts, those are subject to change.
 
-Like the above mentioned charts, those are subject to change.
+We also plan to make the website responsive, but this may change if we do not have enough time.
 
 
 
