@@ -76,12 +76,46 @@ Regarding restaurant-oriented visualizations, the [NYC Foodiverse](http://nycfoo
   
 On a different level, the YouTube channel from the [Vox](https://www.youtube.com/@Vox) newspaper is a good model at making data visualizations and infographics simple enough for everyone to understand. They can simplify complex subjects using clear and helpful visualizations to display data, metrics, etc to make people understand the big picture.
 
-## <a name="milestone-2">Milestone 2 (7th May, 5pm)
+## <a name="milestone-2"></a>Milestone 2 (7th May, 5pm)
 
 **10% of the final grade**
 
+### Sketch and skeleton
 
-## <a name="milestone-3">Milestone 3 (4th June, 5pm)
+The following sketch will give an overview about the visualization we have in mind :
+
+![Panel 1](/imgs/panel1.png)
+![Panel 2](/imgs/panel2.png)
+
+In a nutshell, we will have two panels : one centered around a restaurant map and the other about cuisine types and reviews. Features are explained in more detail in the following sections.
+
+The skeleton of the project can be seen in the `website` folder.
+
+### Tools and knowledges
+
+First of all, for the heatmap and cuisine selector we need filters which can be implemented using Javascript and D3.js. We can also make use of the lecture on interactions and views. 
+
+Secondly, we need to deal with geographic information thus we decided to use maps. Here we can make use of the lecture on Practical Maps and also the JS libraries Leaflet and D3 for an interactive map. 
+
+Finally, regarding the several graphs such as average ratings, pie chart per canton and chart for cuisine selector, we can use the lecture on Marks and channels. The charts can be implemented using D3.js and also amCharts in order to obtain smooth transitions in the graph since the visualization will be highly dynamic and the charts are to change very often.
+
+
+### Visualizations and features
+
+The core visualization will be an interactive map displaying restaurants as pin-points. Clicking on one will open a pop-up showing basic information about the restaurant. A search bar is added to enable looking for a particular restaurant.
+
+The interesting feature will be in the heatmap and filters functionalities : by selecting appropriate metrics, layers will be added to the map to add geographical information on top of the map. Heatmap can represent average pricing per neighborhood, the cuisine dominance or also the  proportion of vegan food for example. 
+
+Below the map, adaptive graphics will display information about the restaurant visible on the portion of the map : if the user moves the map, the chart will be recomputed accordingly. Those charts  will aggregate the metrics on the restaurants and show the average ratings, the most frequent cuisine among the restaurants as well as some of the key restaurants. We could also make them take in account information from restaurants from only a certain neighborhood clicked by the user. Those are subject to change if we found more interesting metrics to display in the meantime.
+
+A second panel will be centered around the cuisine types : a user selects one or several types of cuisine and it will display the reviews it got over time as well as the average rating of the cuisine over time. Selecting multiple cuisine types will generate stacked figures. This way, users will have a clear idea about the attractiveness of this cuisine. Additional information about the user profiles that left reviews will help understand the audience better : the repartition in age or canton they are from for example. 
+
+Like the above mentioned charts, those are subject to change.
+
+
+
+
+## <a name="milestone-3"></a>Milestone 3 (4th June, 5pm)
 
 **80% of the final grade**
 
