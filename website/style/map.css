@@ -1,0 +1,52 @@
+.restaurant-icon {
+  position: relative;
+  display: inline-block;
+  top: 0px;
+  left: -20px;
+}
+
+.restaurant-icon .marker-Rating {
+  position: absolute;
+  top: 21px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  font-family: Helvetica;
+  font-weight: 800;
+  color: white;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.restaurant-icon::before{
+  content: "";
+  display: block;
+  width: 40px;
+  height: 50px;
+  background-image: url('/images/Marker1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.custom-cluster-small, .custom-cluster-medium, .custom-cluster-large {
+  border-radius: 20px;
+  border: 2px solid whitesmoke;
+  box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  line-height: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.custom-cluster-small{
+  background-color: #6cdd7f;
+}
+.custom-cluster-medium{
+  background-color: #F7FABF;
+}
+.custom-cluster-large{
+  background-color: #E892A2;
+}
