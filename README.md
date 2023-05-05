@@ -81,7 +81,7 @@ On a different level, the YouTube channel from the [Vox](https://www.youtube.com
 **10% of the final grade**
 
 
-## <a name="milestone-2">Milestone 3 (4th June, 5pm)
+## <a name="milestone-3">Milestone 3 (4th June, 5pm)
 
 **80% of the final grade**
 
