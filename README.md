@@ -8,7 +8,7 @@
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
-## <a name="milestone-1"></a>A Milestone 1 (23rd April, 5pm)
+## <a name="milestone-1"></a>Milestone 1 (23rd April, 5pm)
 
 **10% of the final grade**
 
@@ -76,12 +76,12 @@ Regarding restaurant-oriented visualizations, the [NYC Foodiverse](http://nycfoo
   
 On a different level, the YouTube channel from the [Vox](https://www.youtube.com/@Vox) newspaper is a good model at making data visualizations and infographics simple enough for everyone to understand. They can simplify complex subjects using clear and helpful visualizations to display data, metrics, etc to make people understand the big picture.
 
-## Milestone 2 (7th May, 5pm)
+## <a name="milestone-2">Milestone 2 (7th May, 5pm)
 
 **10% of the final grade**
 
 
-## Milestone 3 (4th June, 5pm)
+## <a name="milestone-2">Milestone 3 (4th June, 5pm)
 
 **80% of the final grade**
 
