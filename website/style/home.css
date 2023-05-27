@@ -30,27 +30,74 @@ input, textarea:focus, input:focus, *:focus  {
     display: block;
 }
 
-#stats {
-    background-color:#BB2649;
+#stats_container {
     width: 100%;
     position: absolute;
     bottom: 0;
+}
+
+#stats {
+    background-color:#BB2649;
+    width: fit-content;
+    position: relative;
     padding: 10px;
     overflow: scroll;
     white-space: nowrap;
+    margin: auto;
 }
 
 .stat_block {
     background-color: #521221;
     margin-right: 20px;
-    width: fit-content;
+    width: 300px;
+    height: 180px;
     display: inline-block;
-}
-
-.stat_block p {
-    padding: 30px 100px 30px 100px;
+    vertical-align: middle;
     color: white;
 }
+
+.stat_block h3 {
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    background-color: green;
+    text-align: center;
+    background-color:#BB2649;
+}
+
+#chart {
+    margin: auto;
+    margin-top: 10px;
+}
+
+#cuisine_ranking {
+    list-style-position: inside;
+}
+
+#popularity {
+    text-align: center;
+}
+
+#popularity p {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#most_popular_reviews {
+    font-size: 50px;
+    position: relative;
+    top: 0;
+}
+
+#reviews_word {
+    top: -10px;
+    position: relative;
+}
+
+/*.stat_block p {
+    padding: 30px 100px 30px 100px;
+    color: white;
+}*/
 
 #selected-page {
     width: 100%;
@@ -1131,4 +1178,24 @@ input, textarea:focus, input:focus, *:focus  {
     -ms-transform: translate(260px); /* Internet Explorer */
     -o-transform: translate(260px); /* Opera */
     transform : translate(260px);
+}
+
+/* Styles for mobile screens */
+@media (max-width: 700px) {
+    #stats {
+        max-height: 200px;
+        width: 100%;
+    }
+
+    .stat_block {
+        display: block;
+        margin-left: calc(50% - 165px);
+        margin-bottom: 15px;
+        border: none;
+    }
+
+    #canva {
+        padding: 0;
+        margin: 0;
+    }
 }

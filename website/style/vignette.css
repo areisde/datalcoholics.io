@@ -1,0 +1,180 @@
+#restaurant-cards-container{
+    display: none;
+    /*width: 250px;
+    height: 250px;*/
+    position: fixed;
+    top: 100px;
+    right: 15px;
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+    background-color: #BB2649;
+    border-radius: 30px;
+}
+
+.vignette-content{
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 150px;
+    transition: 0.5s ease-in-out;
+    margin: 5px 10px 10px 10px;
+  }
+
+ .vignette-michelin, .vignette-special-regimes, .vignette-rating {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+
+
+  .vignette-rating{
+    top: 10px;
+    right: 25px;
+    font-family: 'DM sans';
+    font-size: 20px;
+    font-weight:bolder;
+    text-align: center;
+    line-height: 40px;
+    color: white
+  }
+
+  .vignette-special-regimes{
+    display: flex;
+    background-color: #BB2649;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    bottom: 15px;
+    right: 125px;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+  }
+
+  .vignette-bottom {
+    background-color: #521221;
+    height: 60px;
+    position: relative;
+    top: 125px;
+    width: calc(100% + 20px);
+    left: -10px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .vignette-price{
+    position: relative;
+    height: 40px;
+    width: 80px;
+    text-align: left;
+    left: 25px;
+    top: 10px;
+    line-height: 40px;
+    font-size: 20px;
+    text-indent: -2px;
+  }
+  .vignette-price i{
+    margin-right: 3px;
+  }
+
+
+  .vignette-restaurant-name-container{
+    position: absolute;
+    height: 60px;
+    right: 12px;
+    width: calc(100% - 25px);
+  }
+  .vignette-restaurant-name{
+    text-align: left;
+    line-height: 60px;
+    font-family: 'DM sans';
+    color: white;
+    font-weight: bold;
+    white-space: initial;
+    font-size: var(--name-font-size, 28px);
+  }
+
+  .vignette-restaurant-adress-container{
+    position: absolute;
+    width: calc(100% - 25px);
+    height: 30px;
+    top: 55px;
+    right: 12px;
+  }
+
+  .fa-location-dot, .fa-utensils{
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .fa-utensils {
+    position: absolute;
+    left: 0;
+  }
+
+  .vignette-restaurant-adress{
+    text-align: left;
+    font-family: 'DM sans';
+    font-style: italic;
+    color: white;
+    font-weight:300;
+    white-space: initial;
+    width: calc(100% - 25px);
+    font-size: var(--name-font-size, 14px);
+    display: inline-block;
+    vertical-align: top;
+    margin-top: -3px;
+  }
+
+  .vignette-food-container {
+    position: absolute;
+    top: 90px;
+    width: calc(100% - 25px);
+    height: 30px;
+    left: 12px;
+  }
+
+  .vignette-food-type{
+    text-align: left;
+    font-family: 'DM sans';
+    font-style: italic;
+    color: white;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 25px);
+    margin-left: 20px;
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: top;
+
+  }
+
+  .vignette-special-regimes-popup{
+    display: block;
+    position: absolute;
+    height: 40px;
+    width: 255px;
+    border-radius: 15px;
+    /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); */
+    background-color: aqua;
+    z-index: 5;
+    top: 140px;
+    right: 15px;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
+    font-family: 'DM sans';
+    color: white;
+  }
+
+  /* Styles for mobile screens */
+@media (max-width: 700px) {
+  #restaurant-cards-container{
+    width: calc(100% - 50px);
+    right: 25px;
+  }
+  .vignette-content{
+    width: calc(100% - 20px);
+    margin: auto;
+  }
+}
