@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function() {
         complete: function(results) {
             // Store CSV data as an array of objects
             var data = results.data;
-            
+            var heatData = [];
+
             for (var i in data) {
                 var row = data[i];
 
@@ -58,29 +59,64 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 markerContent.appendChild(markerRating);
                 //markerContent.appendChild(markerFoodType);
+                
+                // Validate latitude and longitude values
+                var latitude = parseFloat(row.latitude);
+                var longitude = parseFloat(row.longitude);
 
-                var marker = L.marker([row.latitude, row.longitude],{
-                    icon: L.divIcon({
-                        className: "leaflet-marker-icon",
-                        html: markerContent.outerHTML,
-                        iconAnchor: [0, 0],
-                    }),
-                    data: row, // Add the data property to the marker options
-                    id : i
-                });
+                if (isNaN(latitude) || isNaN(longitude)) {
+                    console.warn("Invalid coordinates for row");
+                    continue; // Skip this row and proceed to the next iteration
+                } else {
+                    var marker = L.marker([row.latitude, row.longitude],{
+                        icon: L.divIcon({
+                            className: "leaflet-marker-icon",
+                            html: markerContent.outerHTML,
+                            iconAnchor: [0, 0],
+                        }),
+                        data: row, // Add the data property to the marker options
+                        id : i
+                    });
+    
+                    if (markerContent.classList.contains('restaurant-icon')) {
+                        marker.options.className = 'restaurant-marker'; // Add class to restaurant markers
+                    };
+    
+                    markers.addLayer(marker);
 
-                if (markerContent.classList.contains('restaurant-icon')) {
-                    marker.options.className = 'restaurant-marker'; // Add class to restaurant markers
-                };
 
-                markers.addLayer(marker);
+                    // Heat map
+                    heatData.push([latitude, longitude, parseFloat(row.price_range_estimation)])
+                }
             };
+
+            // Add heat map to the original map
+            L.heatLayer(heatData).addTo(map);
+
+            // Update display
+            updateRestaurantStats(); 
         }
     });
-
-
+    
     // Add the clusters to the map
     map.addLayer(markers);
+
+    /*// Heat map layer
+    var heatData = []
+
+    Papa.parse("data/restaurants.csv", {
+        header: true,
+        download: true,
+        complete: function(results) {
+            heatData = results.data.map(function(row) {
+                return [parseFloat(row.latitude), parseFloat(row.longitude), parseFloat(row.price_range_estimation)];
+            });
+
+            L.heatLayer(heatData).addTo(map);
+        }
+    });*/
+
+    
 
     // Event listener function : marker selection
     markers.on('click', function(e) {
@@ -217,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var ratings = [];
         var cuisines = [];
         var reviews = {};
+        var price = []
 
         // Iterate over the cluster group layers
         markers.eachLayer(function (layer) {
@@ -230,6 +267,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         ratings.push(marker.layer.options.data.overall_rating);
                         cuisines.push(marker.layer.options.data.cuisines);
                         reviews[marker.layer.options.data.restaurant_name] = marker.layer.options.data.number_of_reviews;
+                        price.push([marker.layer.options.data.latitude, marker.layer.options.data.longitude, marker.layer.options.data.price_range_estimation]);
+
                     }
                 });
             } else {
@@ -239,6 +278,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     ratings.push(layer.options.data.overall_rating);
                     cuisines.push(layer.options.data.cuisines);
                     reviews[layer.options.data.restaurant_name] = layer.options.data.number_of_reviews;
+                    price.push([layer.options.data.latitude, layer.options.data.longitude, layer.options.data.price_range_estimation]);
                 }
             }
         });
@@ -246,6 +286,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateRatingDistribution(ratings);
         updateCuisineRanking(cuisines);
         updateTopInfo(reviews);
+        //updateHeatMap(price);
     }
 
     function updateRatingDistribution(ratings){
@@ -383,6 +424,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var mostPopNumber = document.getElementById("most_popular_reviews");
         mostPop.textContent = maxReviewsRestaurant;
         mostPopNumber.textContent = maxReviews;
+    }
+
+    function updateHeatMap(data){
+        var heat = L.heatLayer(data);
     }
 
     map.on('moveend', updateRestaurantStats);
