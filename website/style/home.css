@@ -149,7 +149,7 @@ input, textarea:focus, input:focus, *:focus  {
     /*background-color: white;*/
     background: rgb(187 38 73 / 62%); /*rgba(187, 38, 73, 1);*/
     backdrop-filter: blur(10px);
-    width: 15%;
+    width: 13%;
     z-index: 1;
 }
 
