@@ -142,11 +142,14 @@ input, textarea:focus, input:focus, *:focus  {
 /* HEADER */
 #header {
     position: absolute;
-    top: 0;
+    top: 9px;
+    left: 50px;
+    bottom: 601px;
+    border-radius: 6px;
     /*background-color: white;*/
-    background: rgba(187, 38, 73, 1);
+    background: rgb(187 38 73 / 62%); /*rgba(187, 38, 73, 1);*/
     backdrop-filter: blur(10px);
-    width: 100%;
+    width: 15%;
     z-index: 1;
 }
 
@@ -275,7 +278,7 @@ input, textarea:focus, input:focus, *:focus  {
     margin: 0;
     font-weight: bold;
     color: white;
-    padding: 15px 0 15px 0;
+    padding: 0px 0 15px 0;/*15px 0 15px 0;*/
     position: relative;
     top: 10px;
 }
