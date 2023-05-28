@@ -88,13 +88,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         markers.addLayer(marker);
     
     
-<<<<<<< HEAD
+
                         // Heat map data addition
                         heatData.push([latitude, longitude, parseFloat(row.price_range_estimation)])
                     }
-=======
                     markers.addLayer(marker);
->>>>>>> master
+
                     
                 }
             };
