@@ -177,4 +177,13 @@
     width: calc(100% - 20px);
     margin: auto;
   }
+
+  #first_block {
+    position: relative;
+    left: 40px;
+  }
+
+  #stats {
+    padding-left: 10px;
+  }
 }

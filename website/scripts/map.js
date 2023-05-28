@@ -68,25 +68,30 @@ document.addEventListener("DOMContentLoaded", function() {
                     console.warn("Invalid coordinates for row");
                     continue; // Skip this row and proceed to the next iteration
                 } else {
-                    var marker = L.marker([row.latitude, row.longitude],{
-                        icon: L.divIcon({
-                            className: "leaflet-marker-icon",
-                            html: markerContent.outerHTML,
-                            iconAnchor: [0, 0],
-                        }),
-                        data: row, // Add the data property to the marker options
-                        id : i
-                    });
+                    if ((latitude == 0) || (longitude == 0)){
+                        continue;
+                    } else {
+                        var marker = L.marker([row.latitude, row.longitude],{
+                            icon: L.divIcon({
+                                className: "leaflet-marker-icon",
+                                html: markerContent.outerHTML,
+                                iconAnchor: [0, 0],
+                            }),
+                            data: row, // Add the data property to the marker options
+                            id : i
+                        });
+        
+                        if (markerContent.classList.contains('restaurant-icon')) {
+                            marker.options.className = 'restaurant-marker'; // Add class to restaurant markers
+                        };
+        
+                        markers.addLayer(marker);
     
-                    if (markerContent.classList.contains('restaurant-icon')) {
-                        marker.options.className = 'restaurant-marker'; // Add class to restaurant markers
-                    };
     
-                    markers.addLayer(marker);
-
-
-                    // Heat map
-                    heatData.push([latitude, longitude, parseFloat(row.price_range_estimation)])
+                        // Heat map data addition
+                        heatData.push([latitude, longitude, parseFloat(row.price_range_estimation)])
+                    }
+                    
                 }
             };
 
