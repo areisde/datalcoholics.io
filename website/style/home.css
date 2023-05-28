@@ -30,27 +30,108 @@ input, textarea:focus, input:focus, *:focus  {
     display: block;
 }
 
-#stats {
-    background-color:#BB2649;
+#stats_container {
     width: 100%;
     position: absolute;
     bottom: 0;
+}
+
+#general_stats {
+    background-color: #521221;
+    width: 200px;
+    margin: auto;
+    margin-bottom: 0;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+#general_stats_container {
+    background-color: #BB2649;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+#general_stats i {
+    position: absolute;
+    left: 15px;
+    bottom: 12px;
+}
+
+#general_stats * {
+    margin: 0;
+    display: inline-block;
+}
+
+#stats {
+    background-color:#BB2649;
+    width: fit-content;
+    position: relative;
     padding: 10px;
     overflow: scroll;
     white-space: nowrap;
+    margin: auto;
 }
 
 .stat_block {
     background-color: #521221;
     margin-right: 20px;
-    width: fit-content;
+    width: 300px;
+    height: 180px;
     display: inline-block;
-}
-
-.stat_block p {
-    padding: 30px 100px 30px 100px;
+    vertical-align: middle;
     color: white;
 }
+
+.stat_block h3 {
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    background-color: green;
+    text-align: center;
+    background-color:#BB2649;
+}
+
+#chart {
+    margin: auto;
+    margin-top: 10px;
+}
+
+#cuisine_ranking {
+    list-style-position: inside;
+}
+
+#popularity {
+    text-align: center;
+}
+
+#popularity p {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#most_popular_reviews {
+    font-size: 50px;
+    position: relative;
+    top: 0;
+}
+
+#reviews_word {
+    top: -10px;
+    position: relative;
+}
+
+/*.stat_block p {
+    padding: 30px 100px 30px 100px;
+    color: white;
+}*/
 
 #selected-page {
     width: 100%;
@@ -61,11 +142,14 @@ input, textarea:focus, input:focus, *:focus  {
 /* HEADER */
 #header {
     position: absolute;
-    top: 0;
+    top: 9px;
+    left: 50px;
+    bottom: 601px;
+    border-radius: 6px;
     /*background-color: white;*/
-    background: rgba(187, 38, 73, 1);
+    background: rgb(187 38 73 / 62%); /*rgba(187, 38, 73, 1);*/
     backdrop-filter: blur(10px);
-    width: 100%;
+    width: 13%;
     z-index: 1;
 }
 
@@ -194,7 +278,7 @@ input, textarea:focus, input:focus, *:focus  {
     margin: 0;
     font-weight: bold;
     color: white;
-    padding: 15px 0 15px 0;
+    padding: 0px 0 15px 0;/*15px 0 15px 0;*/
     position: relative;
     top: 10px;
 }
@@ -1131,4 +1215,24 @@ input, textarea:focus, input:focus, *:focus  {
     -ms-transform: translate(260px); /* Internet Explorer */
     -o-transform: translate(260px); /* Opera */
     transform : translate(260px);
+}
+
+/* Styles for mobile screens */
+@media (max-width: 700px) {
+    #stats {
+        max-height: 200px;
+        width: 100%;
+    }
+
+    .stat_block {
+        display: block;
+        margin-left: calc(50% - 165px);
+        margin-bottom: 15px;
+        border: none;
+    }
+
+    #canva {
+        padding: 0;
+        margin: 0;
+    }
 }
