@@ -32,7 +32,7 @@ input, textarea:focus, input:focus, *:focus  {
 
 #stats_container {
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
@@ -78,6 +78,7 @@ input, textarea:focus, input:focus, *:focus  {
     overflow: scroll;
     white-space: nowrap;
     margin: auto;
+    padding-left: 30px;
 }
 
 .stat_block {
@@ -126,6 +127,27 @@ input, textarea:focus, input:focus, *:focus  {
 #reviews_word {
     top: -10px;
     position: relative;
+}
+
+#scroll-more {
+    background-color: white;
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    position: relative;
+    display: none;
+}
+
+#scroll-more i {
+    position: absolute;
+    left: calc(50% - 94px);
+    bottom: 12px;
+}
+
+#scroll-more * {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
 }
 
 /*.stat_block p {
@@ -1218,7 +1240,7 @@ input, textarea:focus, input:focus, *:focus  {
 }
 
 /* Styles for mobile screens */
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
     #stats {
         max-height: 200px;
         width: 100%;
@@ -1234,5 +1256,9 @@ input, textarea:focus, input:focus, *:focus  {
     #canva {
         padding: 0;
         margin: 0;
+    }
+
+    #scroll-more {
+        display: block;
     }
 }
