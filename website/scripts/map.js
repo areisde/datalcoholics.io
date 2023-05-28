@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-
+    
     window.onload = function() {
         updateRestaurantStats();
     };
-
+    var heatLayer;
     var map = L.map('map').setView([46.5196535, 6.6322734], 17);
 
     // Cluster bespoke display based on size
@@ -83,21 +83,49 @@ document.addEventListener("DOMContentLoaded", function() {
                     };
     
                     markers.addLayer(marker);
-
-
-                    // Heat map
-                    heatData.push([latitude, longitude, parseFloat(row.price_range_estimation)])
+                    
                 }
             };
 
             // Add heat map to the original map
-            L.heatLayer(heatData).addTo(map);
-
+            heatLayer = L.heatLayer(heatData)
+            map.addLayer(heatLayer)
             // Update display
             updateRestaurantStats(); 
         }
     });
-    
+
+    //Update heat map when filter has changed
+    var e = document.getElementById("filterSelector");
+    e.addEventListener("change", function(){
+        var filter = e.value;
+        console.log(filter)
+        var heatData = [];
+        Papa.parse("data/restaurants.csv", {
+            header: true,
+            download: true,
+            complete: function(results) {
+                // Store CSV data as an array of objects
+                var data = results.data;
+                for (var i in data) {
+                    var row = data[i];
+                    // Validate latitude and longitude values
+                    var latitude = parseFloat(row.latitude);
+                    var longitude = parseFloat(row.longitude);
+                    if (isNaN(latitude) || isNaN(longitude)) {
+                        console.warn("Invalid coordinates for row");
+                        continue; // Skip this row and proceed to the next iteration
+                    } else {
+                        if (filter !== "no_filter"){
+                            heatData.push([latitude, longitude, parseFloat(row[filter])])
+                        }
+                    }
+                };
+                // update heat map
+                updateHeatMap(heatData);
+            }
+        });
+    });
     // Add the clusters to the map
     map.addLayer(markers);
 
@@ -427,11 +455,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateHeatMap(data){
-        var heat = L.heatLayer(data);
+        var newHeatLayer = L.heatLayer(data);
+        map.removeLayer(heatLayer);
+        heatLayer = newHeatLayer;
+        map.addLayer(heatLayer);
     }
 
     map.on('moveend', updateRestaurantStats);
 
     
-
 });
