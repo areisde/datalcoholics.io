@@ -166,12 +166,13 @@ input, textarea:focus, input:focus, *:focus  {
     position: absolute;
     top: 9px;
     left: 50px;
-    bottom: 601px;
+    bottom: auto;
     border-radius: 6px;
     /*background-color: white;*/
     background: rgb(187 38 73 / 62%); /*rgba(187, 38, 73, 1);*/
     backdrop-filter: blur(10px);
     width: 13%;
+    max-width: 90%;
     z-index: 1;
 }
 

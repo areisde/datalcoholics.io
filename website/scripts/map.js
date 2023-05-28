@@ -86,15 +86,14 @@ document.addEventListener("DOMContentLoaded", function() {
                         };
         
                         markers.addLayer(marker);
-                        // Heat map data addition
-                        heatData.push([latitude, longitude, parseFloat(row.price_range_estimation)])
                     }
                 }
             };
-
-            // Add heat map to the original map
+            // Empty heat map at first
             heatLayer = L.heatLayer(heatData)
             map.addLayer(heatLayer)
+            // Add the clusters to the map
+            map.addLayer(markers);
             // Update display
             updateRestaurantStats(); 
         }
@@ -104,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var e = document.getElementById("filterSelector");
     e.addEventListener("change", function(){
         var filter = e.value;
-        console.log(filter)
         var heatData = [];
         Papa.parse("data/restaurants.csv", {
             header: true,
@@ -131,8 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
-    // Add the clusters to the map
-    map.addLayer(markers);
+
 
     /*// Heat map layer
     var heatData = []
