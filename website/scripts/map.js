@@ -99,6 +99,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Recenter on most popular restaurant
+    var mostPop = document.getElementById("most_popular");
+    mostPop.addEventListener("click", function(){
+        var mostPopName = mostPop.textContent;
+        var mostPopMarker = markers.getLayers().find(function(marker) {
+            return marker.options.data.restaurant_name === mostPopName;
+        });
+        map.setView(mostPopMarker.getLatLng(), 17);
+    });
+
+    // close restaurant card when clicking on the cross
+    var close = document.getElementById("closing_button");
+    close.addEventListener("click", function(){
+        main_disp = document.querySelector('#restaurant-cards-container');
+        main_disp.style.display = "none";
+    });
+
+    // close filter panel when clicking on more stats
+    var moreStats = document.getElementById("general_stats");
+    moreStats.addEventListener("click", function(){
+        main_disp = document.querySelector('#header');
+        main_disp.style.display = "none";
+    });
+
     //Update heat map when filter has changed
     var e = document.getElementById("filterSelector");
     e.addEventListener("change", function(){
