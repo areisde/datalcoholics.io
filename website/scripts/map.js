@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var mostPopMarker = markers.getLayers().find(function(marker) {
             return marker.options.data.restaurant_name === mostPopName;
         });
-        map.setView(mostPopMarker.getLatLng(), 17);
+        map.setView(mostPopMarker.getLatLng(), 30);
     });
 
     // close restaurant card when clicking on the cross
