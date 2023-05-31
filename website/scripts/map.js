@@ -491,7 +491,6 @@ document.addEventListener("DOMContentLoaded", function() {
             data[i][2] = (data[i][2]-meanValue)/stdValue;
         }
         var newHeatLayer = L.heatLayer(data);
-        newHeatLayer.setOptions({minOpacity: 0.6});
         map.removeLayer(heatLayer);
         heatLayer = newHeatLayer;
         map.addLayer(heatLayer);
