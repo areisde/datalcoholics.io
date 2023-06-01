@@ -484,35 +484,40 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateHeatMap(data,values){
-        meanValue = mean(values);
-        stdValue = std(values);
+        //meanValue = mean(values);
+        //stdValue = std(values);
+        maxVal = Math.max(...values)/10;
+        //set the max of heat map to the max of the values
+        heatLayer.options.max = maxVal;
+        //set the min of heat map to the min of the values
         // normalize values of data
         for (var i = 0; i < data.length; i++){
-            data[i][2] = (data[i][2]-meanValue)/stdValue;
+            data[i][2] = data[i][2]/10;
         }
         var newHeatLayer = L.heatLayer(data);
+        newHeatLayer.options.max = maxVal;
         map.removeLayer(heatLayer);
         heatLayer = newHeatLayer;
         map.addLayer(heatLayer);
     }
 
-    // compute mean of an array
-    function mean(array){
-        var sum = 0;
-        for (var i = 0; i < array.length; i++){
-            sum += array[i];
-        }
-        return sum/array.length;
-    }
-    // Compute standard deviation of an array
-    function std(array){
-        var meanVal = mean(array);
-        var sum = 0;
-        for (var i = 0; i < array.length; i++){
-            sum += Math.pow(array[i]-meanVal,2);
-        }
-        return Math.sqrt(sum/array.length);
-    }
+    // // compute mean of an array
+    // function mean(array){
+    //     var sum = 0;
+    //     for (var i = 0; i < array.length; i++){
+    //         sum += array[i];
+    //     }
+    //     return sum/array.length;
+    // }
+    // // Compute standard deviation of an array
+    // function std(array){
+    //     var meanVal = mean(array);
+    //     var sum = 0;
+    //     for (var i = 0; i < array.length; i++){
+    //         sum += Math.pow(array[i]-meanVal,2);
+    //     }
+    //     return Math.sqrt(sum/array.length);
+    // }
 
 
     map.on('moveend', updateRestaurantStats);
