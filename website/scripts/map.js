@@ -340,6 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
+        console.log(reviews);
         updateRatingDistribution(ratings);
         updateCuisineRanking(cuisines);
         updateTopInfo(reviews);
@@ -470,12 +471,18 @@ document.addEventListener("DOMContentLoaded", function() {
         var maxReviewsRestaurant = "";
 
         Object.keys(restaurantReviews).forEach(function(restaurantName) {
-            var numberOfReviews = restaurantReviews[restaurantName];
+            var numberOfReviews = parseInt(restaurantReviews[restaurantName], 10);
+            console.log("Number of reviews : " + numberOfReviews);
+            
             if (numberOfReviews > maxReviews) {
                 maxReviews = numberOfReviews;
+                console.log("There is a new max : " + maxReviews);
                 maxReviewsRestaurant = restaurantName;
             }
         });
+
+        console.log(maxReviews)
+
 
         var mostPop = document.getElementById("most_popular");
         var mostPopNumber = document.getElementById("most_popular_reviews");
