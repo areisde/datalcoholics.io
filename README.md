@@ -10,13 +10,6 @@
 
 ## <a name="milestone-1"></a>Milestone 1 (23rd April, 5pm)
 
-**10% of the final grade**
-
-This is a preliminary milestone to let you set up goals for your final project and assess the feasibility of your ideas.
-Please, fill the following sections about your project.
-
-*(max. 2000 characters per section)*
-
 ### Dataset
 
 For our visualization project, we will be exploring a dataset scraped from TripAdvisor by one of our group members for another project (which was also supervised by Prof. Laurent Vuillon). 
@@ -78,8 +71,6 @@ On a different level, the YouTube channel from the [Vox](https://www.youtube.com
 
 ## <a name="milestone-2"></a>Milestone 2 (7th May, 5pm)
 
-**10% of the final grade**
-
 ### Sketch and skeleton
 
 The following sketch will give an overview about the visualization we have in mind :
@@ -115,7 +106,7 @@ We also plan to make the website responsive, but this may change if we do not ha
 
 ## <a name="milestone-3"></a>Milestone 3 (4th June, 5pm)
 
-**80% of the final grade**
+
 
 
 ## Late policy
