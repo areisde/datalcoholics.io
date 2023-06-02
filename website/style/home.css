@@ -169,36 +169,22 @@ input, textarea:focus, input:focus, *:focus  {
     bottom: auto;
     border-radius: 6px;
     /*background-color: white;*/
-    background: rgb(187 38 73 / 62%); /*rgba(187, 38, 73, 1);*/
+    background: rgba(187, 38, 73, 1);
     backdrop-filter: blur(10px);
     width: 13%;
+    min-width: 80px;
     max-width: 90%;
     z-index: 1;
 }
 
 #base-header {
     text-align: center;
-
     margin: 0;
     padding: 0;
     height: 80px;
-    transition: height 0.5s ease-out;
+    min-width: 70px;
 }
 
-.base-header-transition {
-    height: 180px !important;
-    transition: height 0.5s ease-in;
-}
-
-.base-header-transition-groups {
-    height: 120px !important;
-    transition: height 0.5s ease-in;
-}
-
-.base-header-transition-recs {
-    height: 100px !important;
-    transition: height 0.5s ease-in;
-}
 
 #solo-group-switch {
     width: 160px;
@@ -304,6 +290,7 @@ input, textarea:focus, input:focus, *:focus  {
     padding: 0px 0 15px 0;/*15px 0 15px 0;*/
     position: relative;
     top: 10px;
+    min-width: 70px;
 }
 
 .search-header {
