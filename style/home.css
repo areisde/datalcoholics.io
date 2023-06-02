@@ -114,6 +114,10 @@ html, body{
     margin-top: 10px;
 }
 
+#most_popular {
+    cursor: pointer;
+}
+
 #most_popular_reviews {
     font-size: 50px;
     position: relative;
