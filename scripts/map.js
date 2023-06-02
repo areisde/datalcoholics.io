@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 var longitude = parseFloat(row.longitude);
 
                 if (isNaN(latitude) || isNaN(longitude)) {
-                    console.warn("Invalid coordinates for row");
+                    //console.warn("Invalid coordinates for row");
                     continue; // Skip this row and proceed to the next iteration
                 } else {
                     if ((latitude == 0) || (longitude == 0)){
@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     var latitude = parseFloat(row.latitude);
                     var longitude = parseFloat(row.longitude);
                     if (isNaN(latitude) || isNaN(longitude)) {
-                        console.warn("Invalid coordinates for row");
                         continue; // Skip this row and proceed to the next iteration
                     } else {
                         if (filter !== "no_filter"){
@@ -152,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
                 // update heat map
                 updateHeatMap(heatData,values);
-                console.log(heatLayer);
             }
         });
     });
@@ -183,7 +181,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var restIndex = parseInt(e.layer.options.id) + 2;
 
-        console.log(restaurantData.restaurant_name, restIndex);
 
         //Update the content of the card in the "restaurant-cards-container"
         updateRestaurantCard(restaurantData, restIndex);
@@ -340,7 +337,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        console.log(reviews);
         updateRatingDistribution(ratings);
         updateCuisineRanking(cuisines);
         updateTopInfo(reviews);
