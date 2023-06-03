@@ -1,7 +1,7 @@
 function onChange() {
     const e = document.getElementById("cuisine-selector");
 
-    fetch(`../data/cuisine_reviews/aggregated/${e.value}_reviews.json`)
+    fetch(`https://areisde.github.io/datalcoholics.io/data/cuisine_reviews/aggregated/${e.value}_reviews.json`)
     .then((response) =>  response.json())
     .then((json) => {
       //console.log(json)
@@ -16,13 +16,13 @@ function onChange() {
         setTimeData(filtered);
     });
 
-    fetch(`../data/cuisine_users/age/${e.value}_ages.json`)
+    fetch(`https://areisde.github.io/datalcoholics.io/data/cuisine_users/age/${e.value}_ages.json`)
     .then((response) => response.json())
     .then((json) => {
       setPieChart1Data(json)
     });
 
-    fetch(`../data/cuisine_users/comments/${e.value}_comments.json`)
+    fetch(`https://areisde.github.io/datalcoholics.io/data/cuisine_users/comments/${e.value}_comments.json`)
     .then((response) => response.json())
     .then((json) => {
       setPieChart2Data(json)
