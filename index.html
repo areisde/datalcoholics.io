@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="style/map.css">
     <link rel="stylesheet" type="text/css" href="style/vignette.css">
     <link rel="stylesheet" type="text/css" href="style/fontawesome-free-6.2.1-web/css/all.min.css">
-    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
@@ -35,6 +35,15 @@
     <script src="scripts/animations.js"></script>
     <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="style/statistics.css">
+     <!-- Resources -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    
+    <!-- Chart code -->
+    <script src="scripts/statistics.js"></script>
     <script src="scripts/heatmap.js"></script>
     <script src="scripts/leaflet-heatmap.js"></script>
 
@@ -97,15 +106,63 @@
             <div id="stats_container">
                 <div id="general_stats">
                     <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
-                    <p>More stats</p>
+                    <p>More stats here</p>
                 </div>
                 <div id="scroll-more">
                     <i class="fa-solid fa-arrow-down"></i>
                     <p>Scroll for more</p>
                 </div>
                 <div id="general_stats_container">
+                    <i id="close_general_stats" class="fa-solid fa-xmark fa-3x" ></i>
                     <div id="general_stats_content">
-                        <h3>More stats here</h3>
+                        <h1 style="text-align:center">Choose a cuisine to get more details about it</h1>
+                    <p style="text-align:center">These are the 20 most represented types of restaurants in our overall dataset we are studying</p>
+
+                    <div class="center">
+                       
+                    <select style="text-align-last:center" name="cuisine-selector" id="cuisine-selector">
+                        <option value="none">--Please choose a type of cuisine--</option>
+                        <option value="Europeenne">European</option>
+                        <option value="Francaise">French</option>
+                        <option value="Italienne">Italian</option>
+                        <option value="Suisse">Swiss</option>
+                        <option value="Mediterraneenne">Mediterranean</option>
+                        <option value="Pizza">Pizza</option>
+                        <option value="europe_centrale">Central Europe</option>
+                        <option value="Asiatique">Asian</option>
+                        <option value="Bar">Bar</option>
+                        <option value="Fruits_de_mer_&_Poisson">Seafood & Fish</option>
+                        <option value="Internationale">International</option>
+                        <option value="Italie_du_Nord">Northern Italy</option>
+                        <option value="Lombarde">Lombardy</option>
+                        <option value="Cafe">Cafe</option>
+                        <option value="Saine">Healthy</option>
+                        <option value="Pub">Pub</option>
+                        <option value="Americaine">American</option>
+                        <option value="Japonaise">Japanese</option>
+                        <option value="Chinoise">Chinese</option>
+                        <option value="Barbecue_Grillades">Barbecue & Grill</option>
+                    </select>
+                    <h3>Average rating and number of ratings (over time) for the selected cuisine</h3>
+                    
+                    <div id="timechart"></div>
+
+                    </div>
+
+                    
+                    
+                    <div class="flex-container">
+                        <div id="pi1_container">
+                        <h3>Age distribution of cuisine reviewers</h3>
+                        <div id="piechart1" class="piechart"></div>
+                        </div>
+                        
+                        <div id="pi2_container">
+                        <h3>Number of reviews per user that rated this cuisine</h3>
+                        <div id="piechart2" class="piechart"></div>
+                        </div>
+        
+      </div> 
                     </div>
                 </div>
                 <div id="stats">

@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     var latitude = parseFloat(row.latitude);
                     var longitude = parseFloat(row.longitude);
                     if (isNaN(latitude) || isNaN(longitude)) {
+                        //console.warn("Invalid coordinates for row");
                         continue; // Skip this row and proceed to the next iteration
                     } else {
                         if (filter !== "no_filter"){
@@ -151,9 +152,26 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
                 // update heat map
                 updateHeatMap(heatData,values);
+                console.log(heatLayer);
             }
         });
     });
+
+
+    /*// Heat map layer
+    var heatData = []
+
+    Papa.parse("data/restaurants.csv", {
+        header: true,
+        download: true,
+        complete: function(results) {
+            heatData = results.data.map(function(row) {
+                return [parseFloat(row.latitude), parseFloat(row.longitude), parseFloat(row.price_range_estimation)];
+            });
+
+            L.heatLayer(heatData).addTo(map);
+        }
+    });*/
 
     
 
@@ -165,6 +183,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var restIndex = parseInt(e.layer.options.id) + 2;
 
+        //console.log(restaurantData.restaurant_name, restIndex);
 
         //Update the content of the card in the "restaurant-cards-container"
         updateRestaurantCard(restaurantData, restIndex);
@@ -177,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     // Get the bounds of the displayed map to display only the cards
-    //var bounds = map.getBounds();
+    var bounds = map.getBounds();
 
     // Check if the element overflows the container
     function isOverflown(element,containerSize){
@@ -202,6 +221,16 @@ document.addEventListener("DOMContentLoaded", function() {
         return element.style.setProperty('--name-font-size', elementFontSize + 'px');
     }
 
+    // Change Background of Michelin Badge if Michelin Star :
+    /*function checkForStar(star,bg,container){
+        if(star == 1){
+            bg = "white";
+        }
+        else if(star == 0){
+            bg = "grey";
+        }
+        return container.style.setProperty('--bg-michelin', bg);
+    }*/
 
     //function that add dollars icon depending on price range :
     function dolladolla(sign,price_range_estimation){
@@ -236,8 +265,19 @@ document.addEventListener("DOMContentLoaded", function() {
         var restNameText = document.querySelector('.vignette-restaurant-name');
         var adressContainer = document.querySelector('.vignette-restaurant-adress-container');
         var adressText = document.querySelector('.vignette-restaurant-adress');
+        var foodContainer = document.querySelector('.vignette-food-container')
+        var foodText = document.querySelector('.vignette-food-type');
         let nameFontSize = 28;
         let adressFontSize = 12;
+        let foodFontSize = 28;
+
+
+        // Check if Michelin star or not :
+        //var MichelinBadge = document.querySelector('.vignette-michelin');
+        //var MichelinBG = "";
+        //var MichelinStar = restaurantData.michelin;
+        //checkForStar(MichelinStar,MichelinBG,MichelinBadge);
+
 
         // Update the content of the card with the data for the selected restaurant
         vignette.querySelector('.vignette-restaurant-name').innerHTML = restaurantData.restaurant_name;
@@ -246,8 +286,19 @@ document.addEventListener("DOMContentLoaded", function() {
         vignette.querySelector('.vignette-price').innerHTML = dollarSigns;
         vignette.querySelector('.vignette-food-type').innerHTML = restaurantData.cuisines;
 
+        // vignette.querySelector('.vignette-special-regimes-popup').innerHTML = restaurantData.special_regimes;
+
         adaptFontSize(restNameText,nameFontSize,restNameContainer);
         adaptFontSize(adressText,adressFontSize,adressContainer);
+        //adaptFontSize(foodText, foodFontSize, foodContainer);
+
+        // Add image :
+        //main_image_0
+
+        //var restaurantImageCont = document.querySelector('vignette-restaurant-image');
+        //var restaurantImage = document.querySelector('.restaurant-image');
+        //var imagePath = 'data/restaurant_images/' + restIndex + '/main_image_0.jpg';
+        //restaurantImage.setAttribute('src', imagePath);
     }
 
     function updateRestaurantStats(){
@@ -255,6 +306,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var bounds = map.getBounds();
 
         // Initialize an array to hold the visible markers
+        //var visibleMarkers = [];
         var ratings = [];
         var cuisines = [];
         var reviews = {};
@@ -268,6 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 layer.getAllChildMarkers().forEach(function (marker) {
                     // Check if the marker is within the visible bounds
                     if (bounds.contains(marker.getLatLng())) {
+                        //visibleMarkers.push(marker.layer.options.data.restaurant_link);
                         ratings.push(marker.layer.options.data.overall_rating);
                         cuisines.push(marker.layer.options.data.cuisines);
                         reviews[marker.layer.options.data.restaurant_name] = marker.layer.options.data.number_of_reviews;
@@ -278,6 +331,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 // Individual marker case
                 if (bounds.contains(layer.getLatLng())) {
+                    //visibleMarkers.push(layer.options.data.restaurant_link);
                     ratings.push(layer.options.data.overall_rating);
                     cuisines.push(layer.options.data.cuisines);
                     reviews[layer.options.data.restaurant_name] = layer.options.data.number_of_reviews;
@@ -286,9 +340,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
+        console.log(reviews);
         updateRatingDistribution(ratings);
         updateCuisineRanking(cuisines);
         updateTopInfo(reviews);
+        //updateHeatMap(price);
     }
 
     function updateRatingDistribution(ratings){
@@ -307,6 +363,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 ratingCounts[Math.round(rating)]++;
             }
         });
+        
+        // Print the rating distribution
+        /*for (var rating in ratingCounts) {
+            console.log("Rating " + rating + ": " + ratingCounts[rating]);
+        }*/
 
         // Plot rating
         // Chart.js configuration
@@ -410,8 +471,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var maxReviewsRestaurant = "";
 
         Object.keys(restaurantReviews).forEach(function(restaurantName) {
-            var numberOfReviews = parseInt(restaurantReviews[restaurantName], 10);
-
+            var numberOfReviews = parseFloat(restaurantReviews[restaurantName]);
             if (numberOfReviews > maxReviews) {
                 maxReviews = numberOfReviews;
                 maxReviewsRestaurant = restaurantName;
@@ -442,6 +502,24 @@ document.addEventListener("DOMContentLoaded", function() {
         heatLayer = newHeatLayer;
         map.addLayer(heatLayer);
     }
+
+    // // compute mean of an array
+    // function mean(array){
+    //     var sum = 0;
+    //     for (var i = 0; i < array.length; i++){
+    //         sum += array[i];
+    //     }
+    //     return sum/array.length;
+    // }
+    // // Compute standard deviation of an array
+    // function std(array){
+    //     var meanVal = mean(array);
+    //     var sum = 0;
+    //     for (var i = 0; i < array.length; i++){
+    //         sum += Math.pow(array[i]-meanVal,2);
+    //     }
+    //     return Math.sqrt(sum/array.length);
+    // }
 
 
     map.on('moveend', updateRestaurantStats);

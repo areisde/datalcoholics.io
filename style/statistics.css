@@ -1,0 +1,42 @@
+#timechart {
+    width: 100%;
+    height: 400px;
+}
+
+.piechart {
+    width: 100%;
+    height: 400px;
+}
+
+select {
+    display: block;
+    margin: 0 auto;
+}
+
+.center {
+    margin: auto;
+    width: 90%;
+}
+
+
+
+.flex-container {
+    /*display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;*/
+    text-align: center;
+}
+
+#pi1_container, #pi2_container {
+    display: inline-block;
+    width: calc(50% - 5px);
+}
+
+@media (max-width: 1000px) {
+
+    #pi1_container, #pi2_container {
+        display: block;
+        width: 100%;
+    }
+}
