@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
                 // update heat map
                 updateHeatMap(heatData,values);
-                console.log(heatLayer);
+                //console.log(heatLayer);
             }
         });
     });
@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        console.log(reviews);
+        //console.log(reviews);
         updateRatingDistribution(ratings);
         updateCuisineRanking(cuisines);
         updateTopInfo(reviews);
